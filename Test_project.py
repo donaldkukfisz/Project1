@@ -1,15 +1,6 @@
-# -*- coding: utf-8 -*-
+import random
 
-print("hello world")
 
-# %%
-imie = 'donald'
-nazwisko = 'kukfisz'
-print(imie, nazwisko)
+print('Program do zgadywania liczby z zakresu od 1 do 10 000')
+liczba = input('Podaj liczbę: ')
 
-print('added new content')
-
-# %%
-print('new new content')
-print('add another content')
-print('test github')
