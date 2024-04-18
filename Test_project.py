@@ -7,5 +7,6 @@ imie = 'donald'
 nazwisko = 'kukfisz'
 print(imie, nazwisko)
 
+print('added new content')
 
 # %%
