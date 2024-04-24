@@ -10,8 +10,9 @@ Wybierz którą z funkcji chcesz wypróbować:
 choice = int(input('Który program wydaje się ciekawy?'))
 
 if choice == 1:
-
-    print('Program do zgadywania liczby z zakresu od 1 do 10 000')
+    print('')
+    print('''Program do zgadywania liczby z zakresu od 1 do 10 000. 
+Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!''')
     print('...')
 
     number = random.randint(1, 10000)
