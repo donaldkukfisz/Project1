@@ -5,6 +5,7 @@ print('''Program zawierający kilka funkcjonalnosci będących testem kodu.
 Wybierz którą z funkcji chcesz wypróbować:
     
     1) Program do zgadywania liczb z zakresu od 1 do 10 000
+    2) Prosty kalkulator
     
 ''')
 choice = int(input('Który program wydaje się ciekawy?'))
@@ -29,5 +30,26 @@ Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!''')
             print('Gratulacje, odnalazłes liczbę!')
             input()
             break
+input()
+
+if choice == 2:
+    print('')
+    print(''' Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
+          
+          1) dodawanie,
+          2) odejmowanie, 
+          3) mnożenie 
+          4) dzielenie.''')
+    print('')
+    number = int(input('Która z opcji Cie interesuje?'))
+    if number == 1:
+        x = int(input('Podaj pierwszą liczbę: '))
+        y = int(input('Podaj drugą liczbę: '))
+        suma = x + y
+        print(f'Suma liczb wynosi: {suma}')
+        input()
+
+
+    
 input()
 
