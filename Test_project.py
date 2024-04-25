@@ -48,6 +48,12 @@ if choice == 2:
         suma = x + y
         print(f'Suma liczb wynosi: {suma}')
         input()
+    elif number == 2:
+        x = int(input('Podaj pierwszą liczbę: '))
+        y = int(input('Podaj drugą liczbę: '))
+        różnica = x - y
+        print(f'Różnica liczb wynosi: {różnica}')
+        input()
 
 
     
