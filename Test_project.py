@@ -31,10 +31,9 @@ while True:
             elif liczba == number:
                 print('Gratulacje, odnalazłes liczbę!')
                 input()
-                break
-    input()
-    
-    if choice == 2:
+                
+        
+    elif choice == 2:
         print('')
         print(''' Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
               
@@ -43,33 +42,50 @@ while True:
               3) mnożenie 
               4) dzielenie.''')
         print('')
-        number = int(input('Która z opcji Cie interesuje? '))
-        if number == 1:
-            x = int(input('Podaj pierwszą liczbę: '))
-            y = int(input('Podaj drugą liczbę: '))
-            suma = x + y
-            print(f'Suma liczb wynosi: {suma}')
-            
-        elif number == 2:
-            x = int(input('Podaj pierwszą liczbę: '))
-            y = int(input('Podaj drugą liczbę: '))
-            różnica = x - y
-            print(f'Różnica liczb wynosi: {różnica}')
-            
-        elif number == 3:
-            x = x = int(input('Podaj pierwszą liczbę: '))
-            y = int(input('Podaj drugą liczbę: '))
-            mnozenie = x * y
-            print(f'Liczba {x} pomnożona przez {y} wynosi: {mnozenie}')
-            
-        elif number == 4:
-            x = x = int(input('Podaj pierwszą liczbę: '))
-            y = int(input('Podaj drugą liczbę: '))
-            dzielenie = x / y
-            print(f'Liczba {x} podzielona przez {y} wynosi: {dzielenie}')
-            
-    
-    
         
-    input()
+        while True:
+            number = int(input('\nKtóra z opcji kalkulatora Cie interesuje? '))
+            
+            if number == 1:
+                x = int(input('Podaj pierwszą liczbę: '))
+                y = int(input('Podaj drugą liczbę: '))
+                suma = x + y
+                print(f'Suma liczb wynosi: {suma}')
+                print('')
+
+                
+            elif number == 2:
+                x = int(input('Podaj pierwszą liczbę: '))
+                y = int(input('Podaj drugą liczbę: '))
+                różnica = x - y
+                print(f'Różnica liczb wynosi: {różnica}')
+                print('')
+
+                
+            elif number == 3:
+                x = x = int(input('Podaj pierwszą liczbę: '))
+                y = int(input('Podaj drugą liczbę: '))
+                mnozenie = x * y
+                print(f'Liczba {x} pomnożona przez {y} wynosi: {mnozenie}')
+                print('')
+
+                
+            elif number == 4:
+                x = x = int(input('Podaj pierwszą liczbę: '))
+                y = int(input('Podaj drugą liczbę: '))
+                dzielenie = x / y
+                print(f'Liczba {x} podzielona przez {y} wynosi: {dzielenie}\n')
+                print('')
+
+                
+            moving_on = input('Czy chcesz kontynuować działanie programu? T/N: ')
+            if moving_on.lower() == 't':
+                continue
+            elif moving_on.lower() == 'n':
+                break
+            
+            
+                    
+          
+input()
 
