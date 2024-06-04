@@ -6,11 +6,12 @@ Wybierz którą z funkcji chcesz wypróbować:
     
     1) Program do zgadywania liczb z zakresu od 1 do 10 000
     2) Prosty kalkulator
+    3) Tabliczka mnożenia
     
 ''')
 
 while True:
-    choice = int(input('Który program wydaje się ciekawy? '))
+    choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 3 i potwierdź ENTEREM): '))
     
     if choice == 1:
         print('')
@@ -84,6 +85,31 @@ while True:
             elif moving_on.lower() == 'n':
                 break
             
+    elif choice == 3:
+        print('')
+        print('Oto tabliczka mnożenia do 10.')
+        print('')
+
+        number_one = list(range(0, 11))
+
+
+
+            
+        print(' * |  0  1  2  3  4  5  6  7  8  9  10')
+        print('---+----------------------------------')
+        for number in number_one:
+            print(f'{number:2} |', end='')
+            for i in number_one:
+                print(f'{number * i:3}', end='')
+            print()
+        
+        print('')
+        moving_on = input('Czy chcesz sprawdzić inny program? T/N: ')
+        if moving_on.lower() == 't':
+            continue
+        elif moving_on.lower() == 'n':
+            break
+        print('')
             
                     
           
