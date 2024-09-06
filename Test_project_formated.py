@@ -11,11 +11,14 @@ def main():
         2) Prosty kalkulator
         3) Tabliczka mnożenia
         4) Prognoza pogody w miastach
+        5) Gra w poszukiwanie skarbu
+        6) Gra z rzutem koscią
         
     ''')
     
     while True:
-        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 4 i potwierdź ENTEREM): '))
+        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 6 i potwierdź ENTEREM): '))
+        print('')
         
         if choice == 1:
             guess_the_number()
@@ -24,7 +27,15 @@ def main():
         elif choice == 3:
             multiply_table()
         elif choice == 4:
-             weather_broadcast()
+            weather_broadcast()
+        elif choice == 5:
+            treasure_hunting()
+        elif choice == 6:
+            rolling_dice()
+        else:
+            print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
+            print('')
+            continue
              
     input()
             
@@ -32,8 +43,8 @@ def guess_the_number():
     
     print('')
     print('''
-Program do zgadywania liczby z zakresu od 1 do 10 000. 
-Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!
+    Program do zgadywania liczby z zakresu od 1 do 10 000. 
+    Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!
     ''')
     print('...')
         
@@ -41,26 +52,26 @@ Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!
         
     while True:
         guess = int(input('Podaj liczbę: '))
-        if guess > number:
-            print('Za dużo!')
+        if guess > 10000:
+            print('Liczba poza zakresem!')
         elif guess < number:
             print('Za mało!')
-        elif guess > 10000:
-            print('Liczba poza zakresem!')
+        elif guess > number:
+            print('Za dużo!')
         elif guess == number:
-            print('Gratulacje, odnalazłes liczbę!')
+            print('Gratulacje, odnalazłeś liczbę!')
             input()
                     
 def calculator():
     
     print('')
     print(''' 
-Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
-          
-1) dodawanie,
-2) odejmowanie, 
-3) mnożenie 
-4) dzielenie.''')
+    Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
+              
+    1) dodawanie,
+    2) odejmowanie, 
+    3) mnożenie 
+    4) dzielenie.''')
     print('')
     
     while True:
@@ -138,7 +149,7 @@ def multiply_table():
 def weather_broadcast():
     
     print('Program do sprawdzania aktualnej pogody w miastach.')
-    query = input('W jakim miecie chcesz sprawdzić pogodę?: ')
+    query = input('W jakim miescie chcesz sprawdzić pogodę?: ')
     
     api_key = 'b5ac8b7f5dd1e0df9b1a5ec9861fec33'
     
@@ -152,13 +163,142 @@ def weather_broadcast():
             temperature = current_weather['temperature']
             feelslike = current_weather['feelslike']
             
-            
+            print('')
             print(f'Temperatura w {query} wynosi: {temperature} stopni Celsjusza.')
             print(f'Odczuwalna temperatura w {query} wynosi: {feelslike} stopni Celsjusza.')
+            print('')
             
         else:
             print('Błąd, nie można odczytać temperatury. Sprawdź czy poprawnie wpisałes nazwę miasta.')
+    
+def treasure_hunting():
+    
+    game_width_x = 20
+    game_height_y = 20
+
+    treasure_location_x = random.randint(0, game_width_x)
+    treasure_location_y = random.randint(0, game_height_y)
+
+    player_x = 0
+    player_y = 0
+    
+    print('')
+    print('')
+    print('Wybrałes grę w poszukiwanie skarbu.')
+    print('')
+    print('Gra odbywa się na obszarze 20 pól na 20 pól. Zacznasz w lewym dolnym rogu z pozycji 0,0.')
+
+    while True:
+        choice = input('W którą stronę idziesz? [G, D, L, P]: ')
+        
+        if choice.lower() == 'g':
+            player_y += 1
+        elif choice.lower() == 'd':
+            player_y -= 1
+        elif choice.lower() == 'l':
+            player_x -= 1
+        elif choice.lower() == 'p':
+            player_x += 1
            
+        print(f'Szerokosc gracza: {player_x}, wysokosc gracza: {player_y}')
+        print('')
+        
+        if player_x < 0:
+            print('Uderzyłes w scianę, spróbuj innego kierunku!')
+            player_x = 0
+            continue
+        if player_y < 0:
+            print('Uderzyłes w scianę, spróbuj innego kierunku!')
+            player_y = 0
+            continue
+        
+        if player_x == treasure_location_x and player_y == treasure_location_y:
+            print('Gratulacje, odnalazłes skarb! Gra zakończona!')
+            print(f'Skarb znajdował się na współrzędnych ({player_x}, {player_y})')
+            input()
+            break
+        elif player_x == treasure_location_x:
+            print('Jestes w jednej szerokosci ze skarbem!')
+            print('')
+        elif player_y == treasure_location_y:
+            print('Jestes w jednej wysokosci ze skarbem!')
+            print('')
+            
+def rolling_dice():
+    
+    def roll_dice():
+        min_value = 1
+        max_value = 6
+        roll = random.randint(min_value, max_value)
+        
+        return roll
+
+    print('Zabawa z kostką do gry.')
+
+    while True:
+        
+        number_of_players = input('Podaj liczbę graczy między 2-5: ')
+        
+        if number_of_players.isdigit():
+            number_of_players = int(number_of_players)
+        else:
+            print('Błąd, nie podałes liczby, spróbuj ponownie.')
+            continue
+        
+        
+        if number_of_players < 2 or number_of_players > 5:
+            print('Niewłaciwa liczba graczy, spróbuj ponownie.')
+            continue
+        
+        else:
+            print(f'Liczba graczy to: {number_of_players}')
+            break
+        
+    max_score = 30
+
+    player_scores = [0 for player in range(number_of_players)]
+    #player scores to lista punktów dla każdego zawodnika z number_of_players)
+
+
+
+
+    while max(player_scores) < max_score:
+        
+        for player in range(number_of_players):
+            
+            print('')
+            print(f'Kolej gracza {player + 1}!')
+            
+            
+            sum_of_points = 0
+            
+            while sum_of_points < 30:
+                
+                throw = input('Czy chcesz rzucić kostką? (T): ')
+                print('')
+                if throw.lower() != 't':
+                    break
+            
+                value = roll_dice()
+                if value == 1:
+                    print('Wyrzuciłes 1! Twój wynik zostaje wyzerowany!')
+                    sum_of_points = 0
+                    break
+                
+                else:
+                    print(f'Wyrzuciłes: {value}')
+                    sum_of_points += value
+                    print(f'Twój obecny wynik to: {sum_of_points}')
+                    
+            player_scores[player] = sum_of_points
+                            
+            if player_scores[player] >= max_score:
+                print('')
+                print('KONIEC GRY')
+                print(f'Zwyciężcą jest gracz z numerem {player + 1}!')
+                break
+            
+        
         
                                
 
@@ -167,3 +307,4 @@ if __name__ == '__main__':
     main()
     input('Naciśnij ENTER, aby zakończyć...')
     
+
