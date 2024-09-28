@@ -1,6 +1,7 @@
 import random
 import requests
 import json
+import time
 
 def main():   
     print('''Program zawierający kilka funkcjonalnosci będących testem kodu.
@@ -13,11 +14,12 @@ def main():
         4) Prognoza pogody w miastach
         5) Gra w poszukiwanie skarbu
         6) Gra z rzutem koscią
+        7) Problemy matematyczne
         
     ''')
     
     while True:
-        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 6 i potwierdź ENTEREM): '))
+        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 7 i potwierdź ENTEREM): '))
         print('')
         
         if choice == 1:
@@ -32,6 +34,8 @@ def main():
             treasure_hunting()
         elif choice == 6:
             rolling_dice()
+        elif choice == 7:
+            mathematic_problems()
         else:
             print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
             print('')
@@ -299,8 +303,64 @@ def rolling_dice():
                 break
             
         
+def mathematic_problems():
+    
+    number_1 = 3
+    number_2 = 10
+
+    operators = ['+', '-', '*']
+
+    number_of_questions = 10
+
+    print('Program generujący losowe problemy matematyczne.')
+    print('Spróbuj rozwiązać wszystkie 10 poprawnie!')
+    print('')
+
+
+
+    input('Wcinij enter aby zacząć!')
+    print('########################')
+    #zaczynamy odliczać czas
+    start = time.time()
+
+
+    def generate_problem():
         
-                               
+        left_side = random.randint(number_1, number_2)
+        right_side = random.randint(number_1, number_2)
+        
+        problem = str(left_side) + ' ' + random.choice(operators) + ' ' + str(right_side)
+        answer = eval(problem)
+        
+        return problem, answer
+
+    mistakes = 0
+
+    for i in range(number_of_questions):
+        
+            problem, answer = generate_problem()
+            guess = int(input('Problem #' + str(i + 1) + ': ' + problem + ' = '))
+            
+            if guess == answer:
+                print('Prawidłowo! \n')
+            
+            else:
+                print('Błąd! \n')
+                mistakes += 1
+
+    #liczymy różnicę od początku do końca by wyznaczyć czas całkowity
+    endtime = time.time()
+    sum_of_time = endtime - start
+
+    print('########################')
+    print('')    
+    print(f'Koniec! Popełniłes {mistakes} błędów.')
+    print(f'Twój czas to {sum_of_time} sekund.')
+
+
+    input()
+                
+                             
 
     
 if __name__ == '__main__':
