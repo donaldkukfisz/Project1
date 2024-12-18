@@ -32,17 +32,19 @@ def generate_problem():
 
 mistakes = 0
 
+
 for i in range(number_of_questions):
     
-        problem, answer = generate_problem()
-        guess = int(input('Problem #' + str(i + 1) + ': ' + problem + ' = '))
+    problem, answer = generate_problem()
+    guess = int(input('Problem #' + str(i + 1) + ': ' + problem + ' = '))
+    
+    if guess == answer:
+        print('Prawidłowo! \n')
         
-        if guess == answer:
-            print('Prawidłowo! \n')
-        
-        else:
-            print('Błąd! \n')
-            mistakes += 1
+          
+    else:
+        print('Błąd! \n')
+        mistakes += 1
 
 #liczymy różnicę od początku do końca by wyznaczyć czas całkowity
 endtime = time.time()

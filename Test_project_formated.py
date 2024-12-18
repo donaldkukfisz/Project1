@@ -2,6 +2,10 @@ import random
 import requests
 import json
 import time
+import pygame
+import stars
+
+pygame.init()
 
 def main():   
     print('''Program zawierający kilka funkcjonalnosci będących testem kodu.
@@ -15,11 +19,13 @@ def main():
         5) Gra w poszukiwanie skarbu
         6) Gra z rzutem koscią
         7) Problemy matematyczne
+        8) Gra w zbieranie gwiazdek
+        
         
     ''')
     
     while True:
-        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 7 i potwierdź ENTEREM): '))
+        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 8 i potwierdź ENTEREM): '))
         print('')
         
         if choice == 1:
@@ -36,6 +42,9 @@ def main():
             rolling_dice()
         elif choice == 7:
             mathematic_problems()
+        elif choice == 8:
+            stars.main()
+            
         else:
             print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
             print('')
