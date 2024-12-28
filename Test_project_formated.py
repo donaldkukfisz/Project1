@@ -5,7 +5,6 @@ import time
 import pygame
 import stars
 
-pygame.init()
 
 def main():   
     print('''Program zawierający kilka funkcjonalnosci będących testem kodu.
@@ -43,7 +42,7 @@ def main():
         elif choice == 7:
             mathematic_problems()
         elif choice == 8:
-            stars.main()
+            stars.start_game()
             
         else:
             print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
@@ -374,6 +373,6 @@ def mathematic_problems():
     
 if __name__ == '__main__':
     main()
-    input('Naciśnij ENTER, aby zakończyć...')
+    
     
 

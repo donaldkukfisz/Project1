@@ -1,7 +1,6 @@
 import pygame
 import random
 
-
 pygame.init()
 # wielkosc okna gry
 WIDTH, HEIGHT = 1000, 500
@@ -48,9 +47,11 @@ skull_positions = []
 
 
      
-     
+   
 #GŁÓWNA PĘTLA GRY   
-def main():
+def start_game():
+    
+
     global player_x, player_y, star_x, star_y, skull_x, skull_y, score
     global game_won, game_lost, lost_lives #robimy te zmienne jako globalne żeby funkcja mogla je widziec
     
@@ -63,7 +64,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        
+                
+                
         #RUCH GRACZA
         keys = pygame.key.get_pressed() #sprawdza czy przycisk jest wcisniety
         if keys[pygame.K_w]:
@@ -102,14 +104,15 @@ def main():
             #jesli zebrano x punktow - przerywamy petlea
             if check_victory():
                 game_won = True
+                run = False
             
             if lost_lives == 0:
                 game_lost = True
                 run = False
             
         
-        #rysujemy odswiezone okno    
-        draw_window(player_x, player_y)
+            #rysujemy odswiezone okno    
+            draw_window(player_x, player_y)
        
         
     pygame.quit()
@@ -175,8 +178,8 @@ def check_collision_with_skull(player_rect):
 
 
      
+if __name__ == '__main__':
+    start_game()
 
 
-if __name__ == "__main__":
-    main()
 
