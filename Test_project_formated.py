@@ -3,7 +3,7 @@ import requests
 import json
 import time
 import pygame
-import stars
+
 
 
 def main():   
@@ -18,7 +18,7 @@ def main():
         5) Gra w poszukiwanie skarbu
         6) Gra z rzutem koscią
         7) Problemy matematyczne
-        8) Gra w zbieranie gwiazdek
+        
         
         
     ''')
@@ -41,8 +41,6 @@ def main():
             rolling_dice()
         elif choice == 7:
             mathematic_problems()
-        elif choice == 8:
-            stars.start_game()
             
         else:
             print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
