@@ -2,86 +2,98 @@ import random
 import requests
 import json
 import time
-import pygame
+
 
 
 
 def main():   
     print('''Program zawierający kilka funkcjonalnosci będących testem kodu.
           
-    Wybierz którą z funkcji chcesz wypróbować:
-        
-        1) Program do zgadywania liczb z zakresu od 1 do 10 000
-        2) Prosty kalkulator
-        3) Tabliczka mnożenia
-        4) Prognoza pogody w miastach
-        5) Gra w poszukiwanie skarbu
-        6) Gra z rzutem koscią
-        7) Problemy matematyczne
+Wybierz którą z funkcji chcesz wypróbować:
+    
+1) Program do zgadywania liczb z zakresu od 1 do 10 000
+2) Prosty kalkulator
+3) Tabliczka mnożenia
+4) Prognoza pogody w miastach
+5) Gra w poszukiwanie skarbu
+6) Gra z rzutem koscią
+7) Problemy matematyczne
         
         
         
     ''')
-    
+   
     while True:
-        choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 8 i potwierdź ENTEREM): '))
-        print('')
-        
-        if choice == 1:
-            guess_the_number()
-        elif choice == 2:
-            calculator()
-        elif choice == 3:
-            multiply_table()
-        elif choice == 4:
-            weather_broadcast()
-        elif choice == 5:
-            treasure_hunting()
-        elif choice == 6:
-            rolling_dice()
-        elif choice == 7:
-            mathematic_problems()
-            
-        else:
-            print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
+        try:
+            choice = int(input('Który program wydaje się ciekawy? (Wybierz cyfrę od 1 do 7 i potwierdź ENTEREM): '))
             print('')
-            continue
-             
+            
+            if choice == 1:
+                guess_the_number()
+            elif choice == 2:
+                calculator()
+            elif choice == 3:
+                multiply_table()
+            elif choice == 4:
+                weather_broadcast()
+            elif choice == 5:
+                treasure_hunting()
+            elif choice == 6:
+                rolling_dice()
+            elif choice == 7:
+                mathematic_problems()
+                
+            else:
+                print('Nie ma programu o takim numerze! Dokonaj odpowiedniego wyboru z zakresu od 1 do 6:')
+                print('')
+                continue
+        except ValueError:
+            print('-' * 50)
+            print('Błąd, to nie jest liczba! Wybierz cyfrę od 1 do 7!')
+            print('-' * 50)
+    
     input()
             
 def guess_the_number():
     
     print('')
     print('''
-    Program do zgadywania liczby z zakresu od 1 do 10 000. 
-    Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!
-    ''')
+Program do zgadywania liczby z zakresu od 1 do 10 000. 
+Liczba została już dla Ciebie wybrana, spróbuj ją odgadnąć!''')
     print('...')
         
     number = random.randint(1, 10000)
-        
+       
     while True:
-        guess = int(input('Podaj liczbę: '))
-        if guess > 10000:
-            print('Liczba poza zakresem!')
-        elif guess < number:
-            print('Za mało!')
-        elif guess > number:
-            print('Za dużo!')
-        elif guess == number:
-            print('Gratulacje, odnalazłeś liczbę!')
-            input()
+        try:
+            guess = int(input('Podaj liczbę: '))
+            if guess > 10000:
+                print('Liczba poza zakresem!')
+            elif guess < number:
+                print('Za mało!')
+                print('')
+            elif guess > number:
+                print('Za dużo!')
+                print('')
+            elif guess == number:
+                print('Gratulacje, odnalazłeś liczbę!')
+                break
+                input()
+        except ValueError:
+            print('Ups! To nie jest cyfra. Podaj własciwą liczbę!')
+            print('')
+            continue
                     
 def calculator():
     
     print('')
     print(''' 
-    Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
-              
-    1) dodawanie,
-    2) odejmowanie, 
-    3) mnożenie 
-    4) dzielenie.''')
+Wybrałes prosty kalkulator działań na dwóch liczbach. Możliwe jest:
+          
+1) dodawanie,
+2) odejmowanie, 
+3) mnożenie 
+4) dzielenie.''')
     print('')
     
     while True:
